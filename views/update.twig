@@ -1,0 +1,38 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h1 class = "mt-4">Редактирование</h1>
+    <hr>
+    <form class="row g-3" enctype = "multipart/form-data" action = "" method = "post">
+        <input type = "hidden" name = "id" value="{{object.id}}">
+        <div class="col">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" name="title" value="{{object.title}}">
+        </div>
+        <div class="col">
+            <label class="form-label">Краткое описание</label>
+            <input type="text" class="form-control" name="description" value="{{object.desciption}}">
+        </div>
+        <div class="col">
+            <label class="form-label">Тип</label>
+            <select class="form-control" name="type">
+                {% for type in new_types %}
+                    <option value="{{ type.title|title }}" {{ type.title == object.type ? 'selected="selected"' : '' }}>{{ type.title|title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Картинка</label>
+            <input class="form-control" type="file" id="formFileMultiple" name = "image" multiple>
+        </div>
+        <div class="col-12">
+            <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5">{{object.info}}</textarea>
+        </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary">Редактировать</button>
+        </div>
+    </form>
+
+{% endblock %}
+
+

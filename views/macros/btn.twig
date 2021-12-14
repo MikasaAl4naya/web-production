@@ -1,0 +1,5 @@
+{% macro btn(textContent, url, is_active) %}
+<a href="{{url}}" class="btn {{ is_active ? 'btn-primary' : 'btn-link'}} ">
+    {{ textContent }}
+</a>
+{% endmacro %}

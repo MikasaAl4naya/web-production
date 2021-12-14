@@ -1,0 +1,44 @@
+{% extends "__layout.twig" %}
+{% from "/macros/btn.twig" import btn as btn %}
+
+
+{% block content %}
+    
+<div class=" d-inline-flex " style="border: 1px solid gray; padding:5px; margin-left:25px;">
+    {{desciption}}
+</div> 
+
+    <div style="margin-left: 25px;">
+            <ul class="nav nav-pills" style="margin-top: 25px;">
+                
+                <li class=" d-flex flex-row">
+                    
+                    {{ btn("Картинка", "/bands/"~id~"?show=image", is_image) }}
+                    {{ btn("Описание", "/bands/"~id~"?show=info", is_info) }}
+                </li>
+            </ul>
+        
+    </div>
+
+    {% block objectContent %}
+        {% if is_image == true %}
+            <ul class="nav nav-pills" style="margin-top: 20px; padding:25px">
+                <li class=" d-flex flex-row">
+                    <img src={{ image }} style="width: 600px; border: 1px solid black; padding: 4px; margin-top: 5px;" class="nav-link">
+                </li>
+            </ul>
+        {% endif %}
+
+        {% if is_info == true %}
+            <ul class="nav nav-pills" style="margin-top: 20px; padding:25px">
+                <li class=" d-flex flex-row">
+                    <div style="border: 1px solid black; padding: 4px; margin-top: 5px; width: 600px; padding:25px;">
+                        {{info}}
+                    </div>
+                </li>
+            </ul>
+        {% endif %}
+    {% endblock %}
+
+
+{% endblock %}
